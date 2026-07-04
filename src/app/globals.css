@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-cairo), ui-sans-serif, system-ui, sans-serif;
+  --color-gold: #d4af7a;
+  --color-copper: #b87333;
+  --color-electric: #35c8ff;
+}
+
+:root {
+  --matte: #050608;
+  --panel: #0b0e14;
+  --gold: #d4af7a;
+  --electric: #35c8ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #050608;
+}
+
+/* subtle grid backdrop */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(53, 200, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(53, 200, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.gold-text {
+  background: linear-gradient(120deg, #f3e2c0, #d4af7a 40%, #b87333 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(12, 15, 22, 0.6);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 122, 0.14);
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px rgba(53, 200, 255, 0.18);
+}
+
+.glow-gold {
+  box-shadow: 0 0 40px rgba(212, 175, 122, 0.18);
+}
+
+.card-3d {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s,
+    border-color 0.35s;
+}
+.card-3d:hover {
+  transform: translateY(-8px) perspective(900px) rotateX(4deg);
+  border-color: rgba(53, 200, 255, 0.5);
+  box-shadow: 0 22px 60px -20px rgba(53, 200, 255, 0.35);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
+.animate-spin-rev {
+  animation: spin-slow 20s linear infinite reverse;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.35; r: 2; }
+  50% { opacity: 1; r: 3.4; }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -1000; }
+}
+.animate-dash {
+  stroke-dasharray: 6 10;
+  animation: dash 22s linear infinite;
+}
+
+@keyframes flow {
+  to { stroke-dashoffset: -400; }
+}
+.trace {
+  stroke-dasharray: 4 8;
+  animation: flow 8s linear infinite;
+}
+
+.count-up {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: rgba(212, 175, 122, 0.3);
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #050608; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#d4af7a, #b87333);
+  border-radius: 8px;
+}
